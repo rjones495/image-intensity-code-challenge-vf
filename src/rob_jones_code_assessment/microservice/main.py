@@ -27,11 +27,12 @@ def calculate_average_intensity(image: Image.Image) -> float:
     """
     grayscale_image = image.convert("L")
 
+    # Create a histogram 
     histogram = grayscale_image.histogram()
 
     total_pixels = sum(histogram)
 
-    # Protect against dividing by 0 for the average
+    # Protect against dividing by 0 for the average when the image contains no pixels
     if total_pixels == 0:
         raise ValueError("Image contains no pixels.")
 
@@ -50,8 +51,7 @@ async def get_image_intensity(file: UploadFile = File(...)):
     """
     Consume an image of the type PNG.
     Create a histogram of all of the intensities with a count of each intensity.
-    
-    Accept an image and return its average pixel intensity.
+    Calculate the average of the intensities and returns the metrics in the response.
     """
 
     # Throw error when not filename sent
