@@ -27,11 +27,12 @@ def calculate_average_intensity(image: Image.Image) -> float:
     """
     grayscale_image = image.convert("L")
 
+    # Create a histogram 
     histogram = grayscale_image.histogram()
 
     total_pixels = sum(histogram)
 
-    # Protect against dividing by 0 for the average
+    # Protect against dividing by 0 for the average when the image contains no pixels
     if total_pixels == 0:
         raise ValueError("Image contains no pixels.")
 
