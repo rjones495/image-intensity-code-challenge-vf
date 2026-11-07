@@ -1,0 +1,35 @@
+[project]
+name = "rob-jones-code-assessment"
+version = "0.1.0"
+description = "Code Assessment: Creat an image processing microservice to calculate the average intensity of a png image"
+readme = "README.md"
+authors = [
+    { name = "Robert Jones", email = "robertwjones495@gmail.com" }
+]
+requires-python = ">=3.15"
+dependencies = [
+    "fastapi>=0.162.0",
+    "pillow>=13.0.0",
+    "python-multipart>=0.0.33",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[project.scripts]
+rob-jones-code-assessment = "rob_jones_code_assessment:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "httpx>=0.28.0"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["src/rob_jones_code_assessment/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v"
